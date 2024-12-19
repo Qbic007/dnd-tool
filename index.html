@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,10 +27,12 @@
             flex-direction: column;
             align-items: center;
         }
+
         .elements {
-display:flex;
-height: 40px;
-}
+            display: flex;
+            height: 40px;
+        }
+
         .element {
             width: 30px;
             height: 30px;
@@ -83,8 +86,8 @@ height: 40px;
             margin-top: 20px;
             display: flex;
             align-items: center;
-justify-content:center;
-flex-direction:column;
+            justify-content: center;
+            flex-direction: column;
         }
 
         .hp-container input {
@@ -92,10 +95,10 @@ flex-direction:column;
             margin-left: 10px;
         }
 
-.input {
-padding:5px;
-font-size:20px;
-}
+        .input {
+            padding: 5px;
+            font-size: 20px;
+        }
 
         @media (max-width: 450px) {
             .container {
@@ -105,35 +108,46 @@ font-size:20px;
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-<button class="btn" onclick="resetValues()">СБРОСИТЬ</button>
+        <button class="btn" onclick="resetValues()">СБРОСИТЬ</button>
         <div class="column">
-<div><h3> Основное действие </h3></div>
+            <div>
+                <h3> Основное действие </h3>
+            </div>
             <div class="controls">
 
                 <button class="btn" onclick="changeValue(0, -1)">-</button>
-                <input class="input" disabled type="number" id="input1" value="0" min="0" max="3" onchange="updateElements(0)">
+                <input class="input" disabled type="number" id="input1" value="0" min="0" max="3"
+                    onchange="updateElements(0)">
                 <button class="btn" onclick="changeValue(0, 1)">+</button>
             </div>
             <div id="elements1" class="elements"></div>
         </div>
 
-        <div class="column"><div><h3> Вспомогательное действие </h3></div>
+        <div class="column">
+            <div>
+                <h3> Вспомогательное действие </h3>
+            </div>
             <div class="controls">
                 <button class="btn" onclick="changeValue(1, -1)">-</button>
-                <input class="input" disabled type="number" id="input2" value="0" min="0" max="3" onchange="updateElements(1)">
+                <input class="input" disabled type="number" id="input2" value="0" min="0" max="3"
+                    onchange="updateElements(1)">
                 <button class="btn" onclick="changeValue(1, 1)">+</button>
             </div>
             <div id="elements2" class="elements"></div>
         </div>
 
         <div class="column">
-<div><h3> Свободное действие </h3></div>
+            <div>
+                <h3> Свободное действие </h3>
+            </div>
             <div class="controls">
                 <button class="btn" onclick="changeValue(2, -1)">-</button>
-                <input class="input" disabled type="number" id="input3" value="0" min="0" max="3" onchange="updateElements(2)">
+                <input class="input" disabled type="number" id="input3" value="0" min="0" max="3"
+                    onchange="updateElements(2)">
                 <button class="btn" onclick="changeValue(2, 1)">+</button>
             </div>
             <div id="elements3" class="elements"></div>
@@ -141,12 +155,16 @@ font-size:20px;
     </div>
 
     <div class="hp-container">
-<div>
-       <h3> <label for="hp">HP</label>
-        <span>❤️</span></h3></div><div>
-                <button class="btn" onclick="changeHp(-1)">+</button>
-        <input class="input" type="number" id="hp" value="0" min="0">
-                <button class="btn" onclick="changeHp(1)">+</button></div>
+        <div>
+            <h3> <label for="hp">HP</label>
+                <span>❤️</span>
+            </h3>
+        </div>
+        <div>
+            <button class="btn" onclick="changeHp(-1)">+</button>
+            <input class="input" type="number" id="hp" value="0" min="0">
+            <button class="btn" onclick="changeHp(1)">+</button>
+        </div>
     </div>
 
     <script>
@@ -168,11 +186,11 @@ font-size:20px;
         }
 
         function resetValues() {
-		for (let column=0;column<3;column++) {
-			const input = document.getElementById(`input${column + 1}`);
-			input.value = 1;
-			updateElements(column);
-		}
+            for (let column = 0; column < 3; column++) {
+                const input = document.getElementById(`input${column + 1}`);
+                input.value = 1;
+                updateElements(column);
+            }
         }
 
         function updateElements(column) {
@@ -199,4 +217,5 @@ font-size:20px;
     </script>
 
 </body>
+
 </html>
