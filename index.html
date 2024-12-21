@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D&D Helper Tool</title>
     <style>
+        @font-face {
+            font-family: 'Russo One';
+            src: url('fonts/RussoOne-Regular.ttf') format('truetype');
+            /* Update the path if needed */
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             background-color: #3d3b3a;
             font-family: Arial, sans-serif;
@@ -71,8 +79,8 @@
         }
 
         .circle {
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
             background-color: #ff88f9;
         }
@@ -145,9 +153,6 @@
             top: 0;
         }
     </style>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Russo+One&family=PT+Sans&family=Gloock&family=Garamond&family=Playfair+Display&family=Oswald&family=Montserrat&family=Raleway&family=Raleway+Dots&family=Roboto+Slab&family=Source+Serif+Pro&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
@@ -170,7 +175,7 @@
         <div class="column">
             <div>
                 <button class="btn" onclick="changeValue(1, -1)">-</button>
-                <span> Вспомогательное действие </span>
+                <span> бонусное действие </span>
                 <button class="btn" onclick="changeValue(1, 1)">+</button>
             </div>
             <div class="controls">
