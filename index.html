@@ -5,164 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D&D Helper Tool</title>
-    <style>
-        @font-face {
-            font-family: 'Russo One';
-            src: url('fonts/RussoOne-Regular.ttf') format('truetype');
-            /* Update the path if needed */
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            background-color: #3d3b3a;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #d4af37;
-            font-family: 'Russo One', sans-serif;
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 800px;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        .column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-transform: lowercase;
-            border: 1px solid #d4af37;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px;
-            width: 100%;
-        }
-
-        .elements {
-            display: flex;
-            height: 25px;
-            gap: 10px;
-        }
-
-        .element {
-            width: 25px;
-            height: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .diamond {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: #2c7a4a;
-        }
-
-        .triangle {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: #da5500;
-        }
-
-        .circle {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: #ff88f9;
-        }
-
-        .controls {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-        }
-
-        .btn {
-            cursor: pointer;
-            padding: 5px 10px;
-            margin: 0 5px;
-            border: none;
-            background-color: #3d3b3a;
-            color: #d4af37;
-            border-radius: 5px;
-            font-family: 'Russo One', sans-serif;
-            border: 1px solid #d4af37;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .hp-container {
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 15px;
-            margin: 15px;
-            width: 100%;
-            border: 1px solid #d4af37;
-            border-radius: 5px;
-            gap: 15px;
-        }
-
-        .hp-container input {
-            width: 50px;
-        }
-
-        .input {
-            padding: 5px;
-            font-family: 'Russo One', sans-serif;
-            border: 1px solid #d4af37;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #d4af37;
-            background-color: #3d3b3a;
-        }
-
-        .hp-value-container {
-            position: relative;
-        }
-
-        .hp-block {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .icon {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: 10px;
-            top: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
     <button class="btn column" onclick="resetValues()">СБРОСИТЬ</button>
     <div class="container">
         <div class="column">
             <div>
-
-                <button class="btn" onclick="changeValue(0, -1)">-</button><span> Основное действие </span>
+                <button class="btn" onclick="changeValue(0, -1)">-</button>
+                <span class="btn">Основное действие</span>
                 <button class="btn" onclick="changeValue(0, 1)">+</button>
             </div>
             <div class="controls">
@@ -175,7 +27,7 @@
         <div class="column">
             <div>
                 <button class="btn" onclick="changeValue(1, -1)">-</button>
-                <span> бонусное действие </span>
+                <span class="btn">бонусное действие</span>
                 <button class="btn" onclick="changeValue(1, 1)">+</button>
             </div>
             <div class="controls">
@@ -188,7 +40,7 @@
         <div class="column">
             <div>
                 <button class="btn" onclick="changeValue(2, -1)">-</button>
-                <span> Свободное действие </span>
+                <span class="btn">Свободное действие</span>
                 <button class="btn" onclick="changeValue(2, 1)">+</button>
             </div>
             <div class="controls">
@@ -202,8 +54,8 @@
             <div class="hp-block">
                 <div> <label for="max-hp">MAX HP</label></div>
                 <div>
-                    <button class="btn" onclick="changeMaxHp(-10)">10</button>
-                    <button class="btn" onclick="changeMaxHp(-1)">-</button>
+                    <button class="btn small" onclick="changeMaxHp(-10)">-10</button>
+                    <button class="btn small" onclick="changeMaxHp(-1)">-1</button>
                     <span class="hp-value-container">
                         <input class="input" type="number" id="max-hp" value="0" min="0">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -211,15 +63,15 @@
                                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                         </svg>
                     </span>
-                    <button class="btn" onclick="changeMaxHp(1)">+</button>
-                    <button class="btn" onclick="changeMaxHp(10)">10</button>
+                    <button class="btn small" onclick="changeMaxHp(1)">+1</button>
+                    <button class="btn small" onclick="changeMaxHp(10)">+10</button>
                 </div>
             </div>
             <div class="hp-block">
                 <div> <label for="hp">CUR HP</label></div>
                 <div>
-                    <button class="btn" onclick="changeHp(-10)">10</button>
-                    <button class="btn" onclick="changeHp(-1)">-</button>
+                    <button class="btn small" onclick="changeHp(-10)">-10</button>
+                    <button class="btn small" onclick="changeHp(-1)">-1</button>
                     <span class="hp-value-container">
                         <input class="input" type="number" id="hp" value="0" min="0">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -227,79 +79,15 @@
                                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                         </svg>
                     </span>
-                    <button class="btn" onclick="changeHp(1)">+</button>
-                    <button class="btn" onclick="changeHp(10)">10</button>
+                    <button class="btn small" onclick="changeHp(1)">+1</button>
+                    <button class="btn small" onclick="changeHp(10)">+10</button>
                 </div>
             </div>
             <div class="btn" onclick="restoreHp()">восстановить</div>
         </div>
     </div>
 
-    <script>
-        resetValues();
-
-        function changeValue(column, delta) {
-            const input = document.getElementById(`input${column + 1}`);
-            let newValue = parseInt(input.value) + delta;
-            if (newValue >= 0 && newValue <= 3) {
-                input.value = newValue;
-                updateElements(column);
-            }
-        }
-
-        function changeHp(delta) {
-            const input = document.getElementById(`hp`);
-            let newValue = parseInt(input.value) + delta;
-            if (newValue >= 0) {
-                input.value = newValue;
-            }
-        }
-
-        function changeMaxHp(delta) {
-            const input = document.getElementById(`max-hp`);
-            let newValue = parseInt(input.value) + delta;
-            if (newValue >= 0) {
-                input.value = newValue;
-            }
-        }
-
-        function restoreHp() {
-            const maxHp = document.getElementById(`max-hp`);
-            const hp = document.getElementById(`hp`);
-            hp.value = maxHp.value;
-        }
-
-        function resetValues() {
-            for (let column = 0; column < 3; column++) {
-                const input = document.getElementById(`input${column + 1}`);
-                input.value = 1;
-                updateElements(column);
-            }
-        }
-
-        function updateElements(column) {
-            const input = document.getElementById(`input${column + 1}`);
-            const elementContainer = document.getElementById(`elements${column + 1}`);
-            elementContainer.innerHTML = '';
-
-            const count = parseInt(input.value);
-            for (let i = 0; i < count; i++) {
-                let element;
-                if (column === 0) {
-                    element = document.createElement('div');
-                    element.className = 'element diamond';
-                } else if (column === 1) {
-                    element = document.createElement('div');
-                    element.className = 'element triangle';
-                } else if (column === 2) {
-                    element = document.createElement('div');
-                    element.className = 'element circle';
-                }
-                elementContainer.appendChild(element);
-            }
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
