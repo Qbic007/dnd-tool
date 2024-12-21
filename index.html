@@ -7,12 +7,16 @@
     <title>D&D Helper Tool</title>
     <style>
         body {
+            background-color: #3d3b3a;
             font-family: Arial, sans-serif;
+            font-size: 16px;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: #d4af37;
+            font-family: 'Russo One', sans-serif;
         }
 
         .container {
@@ -20,50 +24,57 @@
             justify-content: space-between;
             width: 100%;
             max-width: 800px;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
         }
 
         .column {
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-transform: lowercase;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px;
+            width: 100%;
         }
 
         .elements {
             display: flex;
-            height: 40px;
+            height: 25px;
+            gap: 10px;
         }
 
         .element {
-            width: 30px;
-            height: 30px;
-            margin: 5px;
+            width: 25px;
+            height: 25px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .diamond {
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-bottom: 25px solid green;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #2c7a4a;
         }
 
         .triangle {
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-bottom: 25px solid orange;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #da5500;
         }
 
         .circle {
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-bottom: 25px solid pink;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ff88f9;
         }
 
         .controls {
@@ -77,9 +88,13 @@
             padding: 5px 10px;
             margin: 0 5px;
             border: none;
-            background-color: #007BFF;
-            color: white;
+            background-color: #3d3b3a;
+            color: #d4af37;
             border-radius: 5px;
+            font-family: 'Russo One', sans-serif;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            font-size: 16px;
         }
 
         .hp-container {
@@ -88,86 +103,131 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            padding: 15px;
+            margin: 15px;
+            width: 100%;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            gap: 15px;
         }
 
         .hp-container input {
             width: 50px;
-            margin-left: 10px;
         }
 
         .input {
             padding: 5px;
-            font-size: 20px;
+            font-family: 'Russo One', sans-serif;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #d4af37;
+            background-color: #3d3b3a;
         }
 
-        @media (max-width: 450px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
+        .hp-value-container {
+            position: relative;
+        }
+
+        .hp-block {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 10px;
+            top: 0;
         }
     </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Russo+One&family=PT+Sans&family=Gloock&family=Garamond&family=Playfair+Display&family=Oswald&family=Montserrat&family=Raleway&family=Raleway+Dots&family=Roboto+Slab&family=Source+Serif+Pro&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
+    <button class="btn column" onclick="resetValues()">СБРОСИТЬ</button>
     <div class="container">
-        <button class="btn" onclick="resetValues()">СБРОСИТЬ</button>
         <div class="column">
             <div>
-                <h3> Основное действие </h3>
+
+                <button class="btn" onclick="changeValue(0, -1)">-</button><span> Основное действие </span>
+                <button class="btn" onclick="changeValue(0, 1)">+</button>
             </div>
             <div class="controls">
-
-                <button class="btn" onclick="changeValue(0, -1)">-</button>
-                <input class="input" disabled type="number" id="input1" value="0" min="0" max="3"
+                <input hidden class="input" disabled type="number" id="input1" value="0" min="0" max="3"
                     onchange="updateElements(0)">
-                <button class="btn" onclick="changeValue(0, 1)">+</button>
             </div>
             <div id="elements1" class="elements"></div>
         </div>
 
         <div class="column">
             <div>
-                <h3> Вспомогательное действие </h3>
+                <button class="btn" onclick="changeValue(1, -1)">-</button>
+                <span> Вспомогательное действие </span>
+                <button class="btn" onclick="changeValue(1, 1)">+</button>
             </div>
             <div class="controls">
-                <button class="btn" onclick="changeValue(1, -1)">-</button>
-                <input class="input" disabled type="number" id="input2" value="0" min="0" max="3"
+                <input hidden class="input" disabled type="number" id="input2" value="0" min="0" max="3"
                     onchange="updateElements(1)">
-                <button class="btn" onclick="changeValue(1, 1)">+</button>
             </div>
             <div id="elements2" class="elements"></div>
         </div>
 
         <div class="column">
             <div>
-                <h3> Свободное действие </h3>
+                <button class="btn" onclick="changeValue(2, -1)">-</button>
+                <span> Свободное действие </span>
+                <button class="btn" onclick="changeValue(2, 1)">+</button>
             </div>
             <div class="controls">
-                <button class="btn" onclick="changeValue(2, -1)">-</button>
-                <input class="input" disabled type="number" id="input3" value="0" min="0" max="3"
+                <input hidden class="input" disabled type="number" id="input3" value="0" min="0" max="3"
                     onchange="updateElements(2)">
-                <button class="btn" onclick="changeValue(2, 1)">+</button>
             </div>
             <div id="elements3" class="elements"></div>
         </div>
-    </div>
 
-    <div class="hp-container">
-        <div>
-            <h3> <label for="hp">HP</label>
-                <span>❤️</span>
-            </h3>
-        </div>
-        <div>
-            <button class="btn" onclick="changeHp(-1)">-</button>
-            <input class="input" type="number" id="hp" value="0" min="0">
-            <button class="btn" onclick="changeHp(1)">+</button>
+        <div class="hp-container">
+            <div class="hp-block">
+                <div> <label for="max-hp">MAX HP</label></div>
+                <div>
+                    <button class="btn" onclick="changeMaxHp(-1)">-</button>
+                    <span class="hp-value-container">
+                        <input class="input" type="number" id="max-hp" value="0" min="0">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </span>
+                    <button class="btn" onclick="changeMaxHp(1)">+</button>
+                </div>
+            </div>
+            <div class="hp-block">
+                <div> <label for="hp">CUR HP</label></div>
+                <div>
+                    <button class="btn" onclick="changeHp(-1)">-</button>
+                    <span class="hp-value-container">
+                        <input class="input" type="number" id="hp" value="0" min="0">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </span>
+                    <button class="btn" onclick="changeHp(1)">+</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
+        resetValues();
+
         function changeValue(column, delta) {
             const input = document.getElementById(`input${column + 1}`);
             let newValue = parseInt(input.value) + delta;
@@ -179,6 +239,14 @@
 
         function changeHp(delta) {
             const input = document.getElementById(`hp`);
+            let newValue = parseInt(input.value) + delta;
+            if (newValue >= 0) {
+                input.value = newValue;
+            }
+        }
+
+        function changeMaxHp(delta) {
+            const input = document.getElementById(`max-hp`);
             let newValue = parseInt(input.value) + delta;
             if (newValue >= 0) {
                 input.value = newValue;
