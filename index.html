@@ -197,6 +197,7 @@
             <div class="hp-block">
                 <div> <label for="max-hp">MAX HP</label></div>
                 <div>
+                    <button class="btn" onclick="changeMaxHp(-10)">10</button>
                     <button class="btn" onclick="changeMaxHp(-1)">-</button>
                     <span class="hp-value-container">
                         <input class="input" type="number" id="max-hp" value="0" min="0">
@@ -206,11 +207,13 @@
                         </svg>
                     </span>
                     <button class="btn" onclick="changeMaxHp(1)">+</button>
+                    <button class="btn" onclick="changeMaxHp(10)">10</button>
                 </div>
             </div>
             <div class="hp-block">
                 <div> <label for="hp">CUR HP</label></div>
                 <div>
+                    <button class="btn" onclick="changeHp(-10)">10</button>
                     <button class="btn" onclick="changeHp(-1)">-</button>
                     <span class="hp-value-container">
                         <input class="input" type="number" id="hp" value="0" min="0">
@@ -220,8 +223,10 @@
                         </svg>
                     </span>
                     <button class="btn" onclick="changeHp(1)">+</button>
+                    <button class="btn" onclick="changeHp(10)">10</button>
                 </div>
             </div>
+            <div class="btn" onclick="restoreHp()">восстановить</div>
         </div>
     </div>
 
@@ -251,6 +256,12 @@
             if (newValue >= 0) {
                 input.value = newValue;
             }
+        }
+
+        function restoreHp() {
+            const maxHp = document.getElementById(`max-hp`);
+            const hp = document.getElementById(`hp`);
+            hp.value = maxHp.value;
         }
 
         function resetValues() {
