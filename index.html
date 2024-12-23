@@ -9,45 +9,83 @@
 </head>
 
 <body>
-    <button class="btn column" onclick="resetValues()">СБРОСИТЬ</button>
+    <div style="display: none;">
+        <!-- rhomb --><svg class="element rhomb" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 40.731 40.731" xml:space="preserve">
+            <g>
+                <path
+                    d="M37.761,19.833c0.114,0.164,0.184,0.363,0.184,0.578c0,0.431-0.271,0.797-0.653,0.938 c-1.546,1.096-9.82,7.307-16.016,18.733c-0.122,0.304-0.378,0.548-0.7,0.621c-0.084,0.021-0.168,0.027-0.252,0.027 c-0.339,0-0.656-0.156-0.832-0.453c-0.047-0.07-0.084-0.146-0.112-0.228c-0.804-1.56-6.132-11.422-15.984-18.756 c-0.358-0.152-0.608-0.507-0.608-0.921c0-0.008,0-0.016,0-0.022c-0.004-0.19,0.045-0.381,0.149-0.549 c0.118-0.19,0.295-0.333,0.499-0.41c1.279-0.894,9.649-7.022,15.965-18.612C19.499,0.334,19.899,0,20.376,0 c0.196,0,0.379,0.057,0.533,0.154c0.213,0.12,0.376,0.316,0.455,0.553c0.613,1.209,5.938,11.318,16.04,18.802 C37.548,19.587,37.672,19.698,37.761,19.833z" />
+            </g>
+        </svg>
+        <!-- star --><svg class="element star" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 468.218 468.218"
+            style="enable-background:new 0 0 468.218 468.218;" xml:space="preserve">
+            <g>
+                <circle cx="234.128" cy="230.485" r="102.826" />
+                <path
+                    d="M256.266,20.521c-7.44-14-16.812-20.808-25.963-20.512s-18.073,7.708-24.604,22.156l-49.132,108.898 c0.01-0.01,0.02-0.01,0.029-0.02l-0.009,0.02c23.763-15.702,52.191-24.892,82.754-24.901c26.182,0,50.814,6.732,72.282,18.532 l-0.009-0.01c0.009,0.01,0.019,0.01,0.028,0.01L256.266,20.521z" />
+                <path
+                    d="M124.714,156.566L20.531,211.953c-27.999,14.87-27.253,37.495,1.645,50.538l108.898,49.132 c-15.702-23.763-24.911-52.192-24.911-82.753C106.163,202.667,112.904,178.034,124.714,156.566z" />
+                <path
+                    d="M446.043,205.699l-108.898-49.132c15.702,23.763,24.901,52.202,24.901,82.764c0,26.182-6.732,50.815-18.532,72.292 l104.174-55.376C475.687,241.377,474.94,218.742,446.043,205.699z" />
+                <path
+                    d="M311.632,337.145c-23.763,15.702-52.191,24.892-82.754,24.901c-26.182,0-50.815-6.732-72.283-18.532l0.01,0.01 c-0.01,0-0.019-0.01-0.029-0.01l55.386,104.184c7.43,13.999,16.811,20.808,25.953,20.511c9.151-0.296,18.073-7.707,24.604-22.156 l49.132-108.897c-0.01,0.01-0.02,0.01-0.028,0.02L311.632,337.145z" />
+            </g>
+        </svg>
+        <!-- triangle --><svg class="element triangle" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 491.581 491.581"
+            style="enable-background:new 0 0 491.581 491.581;" xml:space="preserve">
+            <g>
+                <g>
+                    <path
+                        d="M488.594,441.905L253.927,36.571c-0.752-1.091-1.697-2.036-2.788-2.788c-4.948-3.409-11.723-2.16-15.132,2.788 L1.34,444.038c-0.853,1.519-1.314,3.226-1.339,4.968c-0.085,5.773,4.527,10.521,10.299,10.605h469.333 c0.46,0.066,0.923,0.102,1.388,0.107c5.773,0.059,10.5-4.574,10.559-10.347C491.597,446.588,490.525,443.908,488.594,441.905z" />
+                </g>
+            </g>
+        </svg>
+    </div>
     <div class="container">
         <div class="column">
-            <div>
-                <button class="btn" onclick="changeValue(0, -1)">-</button>
-                <span class="btn">Основное действие</span>
-                <button class="btn" onclick="changeValue(0, 1)">+</button>
+            <div class="action-wrapper">
+                <div>
+                    <button class="btn" onclick="changeValue(0, -1)">-</button>
+                    <span class="btn">Основное действие</span>
+                    <button class="btn" onclick="changeValue(0, 1)">+</button>
+                </div>
+                <div>
+                    <input hidden disabled type="number" id="input1" value="0" min="0" max="3"
+                        onchange="updateElements(0)">
+                </div>
+                <div id="elements1" class="elements">
+                </div>
             </div>
-            <div class="controls">
-                <input hidden class="input" disabled type="number" id="input1" value="0" min="0" max="3"
-                    onchange="updateElements(0)">
-            </div>
-            <div id="elements1" class="elements"></div>
-        </div>
 
-        <div class="column">
-            <div>
-                <button class="btn" onclick="changeValue(1, -1)">-</button>
-                <span class="btn">бонусное действие</span>
-                <button class="btn" onclick="changeValue(1, 1)">+</button>
+            <div class="action-wrapper">
+                <div>
+                    <button class="btn" onclick="changeValue(1, -1)">-</button>
+                    <span class="btn">бонусное действие</span>
+                    <button class="btn" onclick="changeValue(1, 1)">+</button>
+                </div>
+                <div>
+                    <input hidden disabled type="number" id="input2" value="0" min="0" max="3"
+                        onchange="updateElements(1)">
+                </div>
+                <div id="elements2" class="elements"></div>
             </div>
-            <div class="controls">
-                <input hidden class="input" disabled type="number" id="input2" value="0" min="0" max="3"
-                    onchange="updateElements(1)">
-            </div>
-            <div id="elements2" class="elements"></div>
-        </div>
 
-        <div class="column">
-            <div>
-                <button class="btn" onclick="changeValue(2, -1)">-</button>
-                <span class="btn">Свободное действие</span>
-                <button class="btn" onclick="changeValue(2, 1)">+</button>
+            <div class="action-wrapper">
+                <div>
+                    <button class="btn" onclick="changeValue(2, -1)">-</button>
+                    <span class="btn">Свободное действие</span>
+                    <button class="btn" onclick="changeValue(2, 1)">+</button>
+                </div>
+                <div>
+                    <input hidden disabled type="number" id="input3" value="0" min="0" max="3"
+                        onchange="updateElements(2)">
+                </div>
+                <div id="elements3" class="elements"></div>
             </div>
-            <div class="controls">
-                <input hidden class="input" disabled type="number" id="input3" value="0" min="0" max="3"
-                    onchange="updateElements(2)">
-            </div>
-            <div id="elements3" class="elements"></div>
+
+            <button class="btn" onclick="resetValues()">СБРОСИТЬ</button>
         </div>
 
         <div class="hp-container">

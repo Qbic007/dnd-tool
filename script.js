@@ -45,18 +45,23 @@ function updateElements(column) {
     elementContainer.innerHTML = '';
 
     const count = parseInt(input.value);
-    for (let i = 0; i < count; i++) {
-        let element;
-        if (column === 0) {
-            element = document.createElement('div');
-            element.className = 'element diamond';
-        } else if (column === 1) {
-            element = document.createElement('div');
-            element.className = 'element triangle';
-        } else if (column === 2) {
-            element = document.createElement('div');
-            element.className = 'element circle';
-        }
+    if(count <= 0) {
+        element = document.createElement('span');
+        element.innerHTML = 'нет';
         elementContainer.appendChild(element);
+    } else {
+        for (let i = 0; i < count; i++) {
+            let element;
+            if (column === 0) {
+                element = document.querySelector('.rhomb');
+                console.log(element)
+            } else if (column === 1) {
+                element = document.querySelector('.triangle');
+            } else if (column === 2) {
+                element = document.querySelector('.star');
+            }
+            const clone = element.cloneNode(true);
+            elementContainer.appendChild(clone);
+        }
     }
 }

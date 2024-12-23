@@ -38,12 +38,18 @@ body {
     padding: 15px;
     margin: 5px;
     width: 100%;
+    gap:10px;
 }
 
 .elements {
     display: flex;
     height: 25px;
     gap: 10px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .element {
@@ -52,33 +58,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.diamond {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: #2c7a4a;
-}
-
-.triangle {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: #da5500;
-}
-
-.circle {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: #ff88f9;
-}
-
-.controls {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
+    color: #d4af37;
+    fill: #d4af37;
 }
 
 .btn {
@@ -91,6 +72,7 @@ body {
     font-size: 16px;
     border: 1px solid #d4af37;
     font-family: 'Russo One', sans-serif;
+    text-transform: lowercase;
 }
 
 .hp-container {
@@ -139,8 +121,16 @@ body {
     height: 20px;
     right: 10px;
     top: 0;
+    fill: #d4af37;
 }
 
 .btn.small {
     width: 45px;
+}
+
+.action-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
